@@ -1,0 +1,129 @@
+.shishi_list {
+    width: 100%;
+    height: auto;
+    /* background: white; */
+    position: relative;
+}
+.shishi_list li{
+    padding-left: 32px;
+    list-style: none;
+}
+
+.shishi_list::before {
+    content: "";
+    width: 4px;
+    height: 100%;
+    background: #7dbaff;
+    background-size: initial;
+    position: absolute;
+    left: 6px;
+    top: 16px;
+}
+
+
+.shishi_list_time {
+    padding: 38px 0 24px;
+    /* display: inline-block; */
+    position: relative;
+    font-size: 32px;
+}
+
+.shishi_list_time::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    background-color: #005dff;
+    position: absolute;
+    left: -32px;
+    top: 52px;
+}
+
+.shishi_list_time_one {
+    padding: 38px 0 24px;
+    position: relative;
+    font-size: 32px;
+    padding-top:0px;
+}
+.shishi_list_time_one::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    background-color: #005dff;
+    position: absolute;
+    left: -32px;
+    top: 14px;
+}
+
+.shishi_list_content{
+    display: block;
+    padding: 24px 40px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+.shishi_list_content h1{
+    font-size: 32px;
+}
+.shishi_list_content p{
+    font-size: 28px;
+}
+
+@media screen and (max-width: 750px) {
+    .shishi_list::before {
+        content: "";
+        width: 0.04rem;
+        height: 100%;
+        background: #7dbaff;
+        background-size: initial;
+        position: absolute;
+        left: 0.06rem;
+        top: 0.16rem;
+    }
+    .shishi_list_time {
+        padding: 0.38rem 0 0.24rem;
+        /* display: inline-block; */
+        position: relative;
+        font-size: 0.32rem;
+    }
+    .shishi_list_time::before {
+        content: "";
+        width: 0.16rem;
+        height: 0.16rem;
+        background-color: #005dff;
+        position: absolute;
+        left: -0.32rem;
+        top: 0.52rem;
+    }
+
+    .shishi_list_time_one {
+        padding: 0.38rem 0 0.24rem;
+        position: relative;
+        font-size: 0.32rem;
+        padding-top:0px;
+    }
+    .shishi_list_time_one::before {
+        content: "";
+        width: 0.16rem;
+        height: 0.16rem;
+        background-color: #005dff;
+        position: absolute;
+        left: -0.32rem;
+        top: 0.14rem;
+    }
+
+    .shishi_list li{
+        padding-left: 0.32rem;
+    }
+
+    .shishi_list_content{
+        display: block;
+        padding: 0.24rem 0.40rem;
+        background-color: #fff;
+        border-radius: 0.08rem;
+    }
+    .shishi_list_content h1{
+        font-size: 0.32rem;
+    }
+    .shishi_list_content p{
+        font-size: 0.28rem;
+    }
+}
