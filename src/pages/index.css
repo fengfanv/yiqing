@@ -1,41 +1,49 @@
-.header{
+.header {
     width: 100%;
     height: auto;
     position: relative;
 }
-.header img{
+
+.header img {
     width: 100%;
     display: block;
 }
-.header_text{
+
+.header_text {
     position: absolute;
     left: 0px;
     right: 0px;
-    margin:0 auto;
+    margin: 0 auto;
     width: 100%;
     font-weight: bold;
     text-align: center;
-    top:30%;
+    top: 30%;
 }
 
-.header_text h1{
+.header_text h1 {
     color: white;
-    font-size:58px;
-    
+    font-size: 44px;
+    font-weight: 300;
 }
-.header_text h2{
+
+.header_text h2 {
     color: white;
-    font-size:68px;
+    font-size: 68px;
+    /* background: #2a93ee; */
+    background-image: linear-gradient(to right, rgba(0,0,0,0), #2a93ee,rgba(0,0,0,0));
 }
+
 /*全国 总数据汇总展示*/
-.total_list{
+
+.total_list {
     width: 100%;
     height: auto;
     list-style: none;
     padding: 20px 0px;
-    margin-bottom:8px;
+    margin-bottom: 8px;
 }
-.total_list li{
+
+.total_list li {
     float: left;
     width: 146px;
     height: auto;
@@ -43,53 +51,69 @@
     margin-left: 4px;
     /* margin-left: 33.2px; */
 }
-.total_list li p{
+
+.total_list li p {
     font-size: 28px;
 }
-.total_list li h3{
+
+.total_list li h3 {
     font-size: 34px;
 }
-.total_list li h4{
+
+.total_list li h4 {
     font-size: 22px;
     color: #999;
     font-weight: normal;
 }
-.total_list li h4 span{
+
+.total_list li h4 span {
     display: block;
 }
-.a_color{
-    color:#e10000;
-}
-.b_color{
-    color:#ffa352;
-}
-.c_color{
-    color:#34aa70;
-}
-.d_color{
-    color:#333;
-}
-.e_color{
-    color:#8C0D0D;
+
+.a_color {
+    color: #e10000;
 }
 
-.update_time{
+.b_color {
+    color: #ffa352;
+}
+
+.c_color {
+    color: #34aa70;
+}
+
+.d_color {
+    color: #333;
+}
+
+.e_color {
+    color: #8C0D0D;
+}
+
+.update_time {
     text-indent: 1em;
     color: #999;
     font-size: 26px;
     margin-top: 16px;
 }
 
-.nav{
-    width: 100%;
+.nav {
+    width: 750px;
     height: auto;
-    list-style:none;
+    list-style: none;
+    background: white;
 }
-.nav a{
+
+.navFa {
+    height: 80px;
+}
+
+.nav a {
     text-decoration: none;
-    color:black;
+    color: black;
 }
-.nav li{
+
+.nav li {
     float: left;
     height: 80px;
     width: 250px;
@@ -99,7 +123,8 @@
     position: relative;
     cursor: pointer;
 }
-.nav li span{
+
+.nav li span {
     width: 100px;
     height: 10px;
     margin: 0 auto;
@@ -107,51 +132,60 @@
     background: white;
     display: block;
 }
-.nav_hover span{
+
+.nav_hover span {
     background: #005dff!important;
 }
 
-.nav_page{
+.nav_page {
     padding: 20px;
 }
 
-.marTop20{
-    margin-top:20px;
+.marTop20 {
+    margin-top: 20px;
 }
 
-.board{
+.board {
     width: 698px;
     margin: 0 auto;
     padding-top: 24px;
     border-top: 1px solid #e8e8e8;
-    border-bottom:1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
 }
 
-.board p{
+.board p {
     font-size: 28px;
     padding-bottom: 24px;
     font-family: 微软雅黑;
 }
 
+.navTop0 {
+    position: fixed;
+    left: 0;
+    top: 0px;
+    right: 0;
+    margin: 0 auto;
+    z-index: 9999;
+}
+
 @media screen and (max-width: 750px) {
-    .header_text h1{
+    .header_text h1 {
         color: white;
-        font-size:0.58rem;
+        font-size: 0.44rem;
+        font-weight: 300;
     }
-    .header_text h2{
+    .header_text h2 {
         color: white;
-        font-size:0.68rem;
+        font-size: 0.68rem;
     }
-    .header_top{
-        font-size:0.58rem;
+    .header_top {
+        font-size: 0.58rem;
     }
-
-    .total_list{
+    .total_list {
         padding: 0.2rem 0rem;
-        margin-bottom:0.08rem;
+        margin-bottom: 0.08rem;
     }
-
-    .total_list li{
+    .total_list li {
         float: left;
         width: 1.46rem;
         height: auto;
@@ -159,23 +193,28 @@
         margin-left: 0.04rem;
         /* margin-left: 0.332rem; */
     }
-    .total_list li p{
+    .total_list li p {
         font-size: 0.28rem;
     }
-    .total_list li h3{
+    .total_list li h3 {
         font-size: 0.34rem;
     }
-    .total_list li h4{
+    .total_list li h4 {
         font-size: 0.22rem;
     }
-    .update_time{
+    .update_time {
         text-indent: 1em;
         color: #999;
         font-size: 0.26rem;
         margin-top: 0.16rem;
     }
-
-    .nav li{
+    .navFa {
+        height: 0.80rem;
+    }
+    .nav {
+        width: 7.5rem;
+    }
+    .nav li {
         float: left;
         height: 0.80rem;
         width: 2.50rem;
@@ -185,7 +224,7 @@
         position: relative;
         cursor: pointer;
     }
-    .nav li span{
+    .nav li span {
         width: 1.00rem;
         height: 0.10rem;
         margin: 0 auto;
@@ -193,21 +232,18 @@
         background: white;
         display: block;
     }
-
-    .nav_page{
+    .nav_page {
         padding: 0.20rem;
     }
-
-    .marTop20{
-        margin-top:0.20rem;
+    .marTop20 {
+        margin-top: 0.20rem;
     }
-
-    .board{
+    .board {
         width: 6.98rem;
         margin: 0 auto;
         padding-top: 0.24rem;
     }
-    .board p{
+    .board p {
         font-size: 0.28rem;
         padding-bottom: 0.24rem;
     }

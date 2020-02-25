@@ -1,8 +1,9 @@
-.yqListHeader{
+.yqListHeader {
     width: 100%;
     height: auto;
 }
-.yqListHeader h5{
+
+.yqListHeader h5 {
     float: left;
     width: 30%;
     text-align: left;
@@ -10,7 +11,8 @@
     height: 80px;
     font-size: 30px;
 }
-.yqListHeader p{
+
+.yqListHeader p {
     float: left;
     width: 23%;
     text-align: center;
@@ -20,23 +22,27 @@
     font-family: 微软雅黑;
     font-weight: bold;
 }
-.yqList{
+
+.yqList {
     width: 100%;
     height: auto;
 }
-.yqList li{
+
+.yqList li {
     width: 100%;
     height: auto;
     list-style: none;
 }
-.yqList h5{
+
+.yqList h5 {
     float: left;
     width: 30%;
     text-align: left;
     line-height: 80px;
     font-size: 30px;
 }
-.yqList p{
+
+.yqList p {
     float: left;
     width: 23%;
     text-align: center;
@@ -45,7 +51,7 @@
     font-family: 微软雅黑;
 }
 
-.yqListTap::before{
+.yqListTap::before {
     content: "";
     width: 20px;
     height: 14px;
@@ -53,58 +59,69 @@
     background-size: 100% 100%;
     background-repeat: no-repeat;
     margin: 0 10px;
-    margin-top:36px;
+    margin-top: 36px;
     display: inline-block;
 }
 
-.yqListTap2::before{
+.yqListTap2::before {
     content: "";
     display: inline-block;
     width: 20px;
     height: 14px;
     margin: 0 10px;
-    margin-top:36px;
-    
+    margin-top: 36px;
 }
 
-.yqListChildList h5{
+.yqListChildList h5 {
     color: #737373;
 }
 
-.yqListChildList p{
+.yqListChildList p {
     color: #737373;
 }
 
-.childShow{
-    display:block;
+.childShow {
+    display: block;
 }
-.childHide{
-    display:none;
+
+.childHide {
+    display: none;
+}
+
+.yqListHeadFa {
+    height: 80px;
+}
+
+.yqListHead80 {
+    width: 750px;
+    background: white;
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 80px;
 }
 
 @media screen and (max-width: 750px) {
-    .yqListHeader h5{
+    .yqListHeader h5 {
         line-height: 1rem;
         height: 0.80rem;
         font-size: 0.30rem;
     }
-    .yqListHeader p{
+    .yqListHeader p {
         line-height: 1rem;
         height: 0.80rem;
         font-size: 0.30rem;
     }
-
-
-    .yqList h5{
+    .yqList h5 {
         line-height: 0.80rem;
         font-size: 0.30rem;
     }
-    .yqList p{
+    .yqList p {
         line-height: 0.80rem;
         font-size: 0.30rem;
     }
-
-    .yqListTap::before{
+    .yqListTap::before {
         content: "";
         width: 0.20rem;
         height: 0.14rem;
@@ -112,17 +129,26 @@
         background-size: 100% 100%;
         background-repeat: no-repeat;
         margin: 0 0.10rem;
-        margin-top:0.36rem;
+        margin-top: 0.36rem;
         display: inline-block;
     }
-    
-    .yqListTap2::before{
+    .yqListTap2::before {
         content: "";
         display: inline-block;
         width: 0.20rem;
         height: 0.14rem;
         margin: 0 0.10rem;
-        margin-top:0.36rem;
-        
+        margin-top: 0.36rem;
+    }
+    .yqListHeadFa {
+        height: 0.80rem;
+    }
+    .yqListHead80 {
+        width: 7.50rem;
+        position: fixed;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        top: 0.80rem;
     }
 }

@@ -10,6 +10,7 @@ import './index.css'
 
 //import tengxunData from '../tengxun.json'
 
+
 //引入子组件
 import Guoneiyiqing from './GuoNeiYiQing'
 import Guowaiyiqing from './GuoWaiYiQing'
@@ -35,23 +36,26 @@ class Index extends Component {
             },
             isGuonei: true,
             isGuowai: false,
-            isShishi: false
+            isShishi: false,
+
+            pageTop: store.getState().pageTop,
+
+            isNavTop0: false,//导航是否悬浮
         }
         //Redux订阅模式
         this.storeChange = this.storeChange.bind(this)//转变this指向
         store.subscribe(this.storeChange)//订阅Redux的状态
-        //this.myComponent = this.myComponent.bind(this,)
-
+        this.isIe = this.isIe.bind(this)
     }
     render() {
         return (
             <Fragment>
                 <div className="container">
                     <div className="header">
-                        <img src={require('../images/header_img.webp')} alt="header_img" />
+                        <img src={this.isIe() ? require('../images/header_img.jpg') : require('../images/header_img.webp')} alt="header_img.webp" />
                         <div className="header_text header_top">
                             <h1>新型冠状病毒肺炎</h1>
-                            <h2>疫情动态播报</h2>
+                            <h2>- 疫情动态播报 -</h2>
                         </div>
                     </div>
                     {/* 更新时间 */}
@@ -86,37 +90,39 @@ class Index extends Component {
                     </ul>
                     {/* 病毒名称和防治措施 */}
                     <div className="board">
-                        <p><span style={{"fontWeight":"bold"}}>病毒</span> : 新型冠状病毒 SARS-CoV-2</p>
-                        <p><span style={{"fontWeight":"bold"}}>传播途径</span> : 飞沫传播、接触传播;粪口传播和气溶胶传播尚待确认</p>
+                        <p><span>病毒</span>：新型冠状病毒 SARS-CoV-2</p>
+                        <p><span>传播途径</span>：飞沫传播、接触传播;粪口传播和气溶胶传播尚待确认</p>
                     </div>
                     {/* 菜单 */}
                     {/* <Router> */}
-                    <ul className="nav clearfix">
-                        <li className={this.state.isGuonei ? "nav_hover" : ""} onClick={this.setNav.bind(this, 'isGuonei')}>
-                            {/* <Link to="/yq">
+                    <div id="nav" className="navFa">
+                        <ul className={(this.state.isNavTop0 ? "navTop0" : "") + " nav clearfix"}>
+                            <li className={this.state.isGuonei ? "nav_hover" : ""} onClick={this.setNav.bind(this, 'isGuonei')}>
+                                {/* <Link to="/yq">
                                     <p>国内疫情</p>
                                     <span></span>
                                 </Link> */}
-                            <p>国内疫情</p>
-                            <span></span>
-                        </li>
-                        <li className={this.state.isGuowai ? "nav_hover" : ""} onClick={this.setNav.bind(this, 'isGuowai')}>
-                            {/* <Link to="/yq/guowai">
+                                <p>国内疫情</p>
+                                <span></span>
+                            </li>
+                            <li className={this.state.isGuowai ? "nav_hover" : ""} onClick={this.setNav.bind(this, 'isGuowai')}>
+                                {/* <Link to="/yq/guowai">
                                     <p>国外疫情</p>
                                     <span></span>
                                 </Link> */}
-                            <p>国外疫情</p>
-                            <span></span>
-                        </li>
-                        <li className={this.state.isShishi ? "nav_hover" : ""} onClick={this.setNav.bind(this, 'isShishi')}>
-                            {/* <Link to="/yq/shishi">
+                                <p>国外疫情</p>
+                                <span></span>
+                            </li>
+                            <li className={this.state.isShishi ? "nav_hover" : ""} onClick={this.setNav.bind(this, 'isShishi')}>
+                                {/* <Link to="/yq/shishi">
                                     <p>实时动态</p>
                                     <span></span>
                                 </Link> */}
-                            <p>实时动态</p>
-                            <span></span>
-                        </li>
-                    </ul>
+                                <p>实时动态</p>
+                                <span></span>
+                            </li>
+                        </ul>
+                    </div>
                     {/* 分页内容 */}
                     {/* <div className="nav_page">
                             <Redirect to="/yq"></Redirect>
@@ -126,20 +132,9 @@ class Index extends Component {
                         </div> */}
                     {/* </Router> */}
                     <div className="nav_page">
-
-                        {/* {this.myComponent.bind(this,true)} */}
-                        {
-                            // (function(isShow){
-                            //     if(isShow){
-                            //         return <Guoneiyiqing />
-                            //     }else{
-                            //         return null;
-                            //     }
-                            // })(this.state.isGuonei)
-                        }
-                        {this.state.isGuonei ? <Guoneiyiqing isShow={true} /> : null}
-                        {this.state.isGuowai ? <Guowaiyiqing isShow={true} /> : null}
-                        {this.state.isShishi ? <Shishidongtai isShow={true} /> : null}
+                        {this.state.isGuonei ? <Guoneiyiqing /> : <div></div>}
+                        {this.state.isGuowai ? <Guowaiyiqing /> : <div></div>}
+                        {this.state.isShishi ? <Shishidongtai /> : <div></div>}
                         {/* <Guoneiyiqing isShow={this.state.isGuonei} style={this.state.isGuonei ? { "display": "block" } : { "display": "none" }} />
                         <Guowaiyiqing isShow={this.state.isGuowai} style={this.state.isGuowai ? { "display": "block" } : { "display": "none" }} />
                         <Shishidongtai isShow={this.state.isShishi} style={this.state.isShishi ? { "display": "block" } : { "display": "none" }} /> */}
@@ -148,14 +143,6 @@ class Index extends Component {
             </Fragment>
         )
     }
-    // myComponent(isShow){
-    //     console.log('111112222233333');
-    //     if(isShow){
-    //         return <Guoneiyiqing />
-    //     }else{
-    //         return <p>哈哈哈哈</p>;
-    //     }
-    // }
     componentDidMount() {
         var _this = this;
         //var indexData = {};//首页数据
@@ -168,6 +155,8 @@ class Index extends Component {
                 _this.setState({
                     indexData: data.indexData
                 })
+                //保存城市坐标数据
+                _this.saveData('ChangeCityZb', data.cityZb);
                 //保存首页数据
                 _this.saveData('ChangeI', data.indexData);
                 //保存国内数据
@@ -177,6 +166,8 @@ class Index extends Component {
                 //保存实时数据
                 _this.saveData('ChangeSs', data.shishiData);
 
+                //关闭弹窗
+                document.getElementById('loading').style.display = "none";
             })
             .catch(function (err) {
                 console.error(err)
@@ -361,8 +352,36 @@ class Index extends Component {
         //     .catch(function (err) {
         //         console.log(err);
         //     })
+
+        var navDocument = document.getElementById('nav');
+        function autoScroll(e) {
+            //var scrollTop = document.documentElement.scrollTop;//滚动条位置
+            //var scrollHeight = document.documentElement.scrollHeight;//滚动条高度
+            //navDocument.getBoundingClientRect().top;//获取元素距离屏幕顶部的距离IE也兼容
+            if (navDocument.getBoundingClientRect().top > 0) {
+                if (_this.state.isNavTop0 !== false) {
+                    //console.log('不需要悬浮');
+                    _this.setState({
+                        isNavTop0: false
+                    })
+                }
+            } else {
+                if (_this.state.isNavTop0 === false) {
+                    //console.log('需要悬浮了');
+                    _this.setState({
+                        isNavTop0: true
+                    });
+                }
+            }
+        }
+        if (window.addEventListener) {
+            window.addEventListener('scroll', autoScroll, false);
+        } else if (window.attachEvent) {
+            //window.attachEvent('onscroll', autoScroll);
+            document.onscroll = autoScroll
+        }
     }
-    //redux有数据变化了
+    //store数据有变化了
     storeChange() {
         this.setState({
             indexData: store.getState().indexData,
@@ -382,20 +401,28 @@ class Index extends Component {
             isGuowai: false,
             isShishi: false
         }, function () {
-            if (a == 'isGuonei') {
+            if (a === 'isGuonei') {
                 _this.setState({
                     isGuonei: true
                 })
-            } else if (a == 'isGuowai') {
+            } else if (a === 'isGuowai') {
                 _this.setState({
                     isGuowai: true
                 })
-            } else if (a == 'isShishi') {
+            } else if (a === 'isShishi') {
                 _this.setState({
                     isShishi: true
                 })
             }
         })
+    }
+    //浏览器是否是ie
+    isIe() {
+        if (!!window.ActiveXObject || "ActiveXObject" in window) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 export default Index

@@ -14,11 +14,39 @@
 ```
 npm install
 ```
-2、启动项目
+2、依赖安装完毕后，如果要兼容IE浏览器看这部，不需要兼容则直接进行第3步
+```javascript
+//1、进入项目node_modules\react-scripts\config\webpack.config.js文件夹配置webpack.config.js
+//2、找到 entry 值，将内部的两个参数位置调换一下位置（把 paths.appIndexJs 放到最上面）
+
+//修改的位置展示
+entry: [
+	// Include an alternative client for WebpackDevServer. A client's job is to
+    // connect to WebpackDevServer by a socket and get notified about changes.
+    // When you save a file, the client will either apply hot updates (in case
+    // of CSS changes), or refresh the page (in case of JS changes). When you
+    // make a syntax error, this client will display a syntax error overlay.
+    // Note: instead of the default WebpackDevServer client, we use a custom one
+    // to bring better experience for Create React App users. You can replace
+    // the line below with these two lines if you prefer the stock client:
+    // require.resolve('webpack-dev-server/client') + '?/',
+    // require.resolve('webpack/hot/dev-server'),
+    paths.appIndexJs,//新位置
+    isEnvDevelopment &&
+            require.resolve('react-dev-utils/webpackHotDevClient'),
+    // Finally, this is your app's code:
+    //paths.appIndexJs,旧位置
+    // We include the app code last so that if there is a runtime error during
+    // initialization, it doesn't blow up the WebpackDevServer client, and
+    // changing JS code would still trigger a refresh.
+].filter(Boolean),
+
+```
+3、启动项目
 ```
 npm start
 ```
-3、打包项目
+4、打包项目
 ```
 npm run build
 ```

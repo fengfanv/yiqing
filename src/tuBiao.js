@@ -2,43 +2,39 @@ import React, { Fragment, Component } from 'react'
 
 import echarts from 'echarts';
 
-
-class App extends Component {
+class tuBiao extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            tableData: {}
+            tableData: null//不用这个数据了，直接用props
         }
     }
     render() {
         return (
             <Fragment>
-                <div id="echartsTable" className="marTop20" style={{ width: '100%', height: '50vh' ,"border":"1px solid #e1e1e1"}}></div>
+                <div id="echartsTable" className="marTop20" style={{ width: '100%', height: '50vh', "border": "1px solid #e1e1e1" }}></div>
             </Fragment>
         )
     }
     componentDidMount() {
-        //在这里写这个是因为，当组件运行过后，关闭了这个组件，又从新打开了组件，组件的state里面没有值，但是因为打开过一次props里有还有值，所以利用这一点，直接从props里那数据
-        if (this.props.data == undefined) {
-        } else {
-            this.setState({
-                tableData: this.props.data
-            }, function () {
-                this.loadTable();
-            });
+        //页面渲染完毕后执行
+        var _this = this;
+        if (_this.props.data !== null && _this.props.data.dataType !== undefined && _this.props.data.xArr !== undefined && _this.props.data.dataTypeColor !== undefined) {
+            _this.loadTable();
         }
     }
-    componentWillReceiveProps(nextProps) {
+    shouldComponentUpdate(nextProps, nextState) {
+        //当props或state改变时执行
         var _this = this;
-        //当组件接收到props时执行
-        //存数据类型
-        if (_this.props.data != nextProps.data) {
-            _this.setState({
-                tableData: nextProps.data
-            }, function () {
-                _this.loadTable();
-            });
+        if (_this.props.data !== null && _this.props.data.dataType !== undefined && _this.props.data.xArr !== undefined && _this.props.data.dataTypeColor !== undefined) {
+            return true;
         }
+        return false;
+    }
+    componentWillUpdate() {
+        var _this = this;
+        //console.log('当允许渲染后执行');
+        _this.loadTable();
     }
     loadTable() {
         var _this = this;
@@ -97,7 +93,7 @@ class App extends Component {
             },
             legend: {
                 //放数据类型
-                data: _this.state.tableData.dataType
+                data: _this.props.data.dataType
             },
             toolbox: {
                 feature: {
@@ -115,7 +111,7 @@ class App extends Component {
                     type: 'category',
                     boundaryGap: true,
                     //横坐标的坐标
-                    data: _this.state.tableData.xArr
+                    data: _this.props.data.xArr
                 }
             ],
             yAxis: {
@@ -123,10 +119,13 @@ class App extends Component {
 
             },
             //每个类型的数据
-            series: _this.state.tableData.shujuArr
-            
+            series: _this.props.data.shujuArr
+
         };
         myChart.setOption(option, true)
     }
 }
-export default App
+tuBiao.defaultProps = {
+    "data": null
+}
+export default tuBiao

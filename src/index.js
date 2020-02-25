@@ -1,7 +1,13 @@
+import 'react-app-polyfill/ie11';
+import 'react-app-polyfill/stable';
+
+
 import React from 'react';
-import ReactDOM,{hydrate} from 'react-dom';
+import ReactDOM from 'react-dom';
 import './public.css'
 import Index from './pages/index'
+
+
 //import MapView from './mapView'
 
 //import TuBiao from './tuBiao'
@@ -11,8 +17,6 @@ import Index from './pages/index'
 //import TuBiao2 from './tuBiao2'
 
 //import Shishidongtai from './pages/ShiShiDongTai'
-
-
 
 
 ReactDOM.render(<Index />, document.getElementById('root'));

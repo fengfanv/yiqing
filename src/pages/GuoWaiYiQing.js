@@ -8,13 +8,12 @@ import TuBiao2 from '../tuBiao2'
 
 import YqList from '../yqList'
 
-
-
 class App extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            guowaiData:store.getState().guowaiData
+            guowaiData: store.getState().guowaiData,
+            cityPositionData: store.getState().cityZb
         }
         this.storeChange = this.storeChange.bind(this);//转变this指向
         store.subscribe(this.storeChange);//订阅Redux的状态
@@ -23,30 +22,24 @@ class App extends Component {
         return (
             <Fragment>
                 {/* <div>国外疫情</div> */}
-                <MapView data={this.state.guowaiData.mapData}/>
-                <TuBiao2 data={this.state.guowaiData.mapData}/>
-                <YqList data={this.state.guowaiData.listData}/>
+                <MapView data={this.state.guowaiData.mapData} cityPositionData={this.state.cityPositionData} />
+                <TuBiao2 data={this.state.guowaiData.mapData} />
+                <YqList data={this.state.guowaiData.listData} />
             </Fragment>
         )
     }
-    //componentDidMount() {
-        //console.log('国外组件加载！');
-        //var _this = this;
-        // _this.setState({
-        //     guowaiData: store.getState().guowaiData
-        // });
-    //}
-    // shouldComponentUpdate() {
-        // if (this.state.guowaiData == undefined) {
-        //     return false;
-        // } else {
-        //     return true;
-        // }
-    // }
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.state.guowaiData !== nextState.guowaiData) {
+            return true
+        } else {
+            return false
+        }
+    }
     //redux订阅模式
     storeChange() {
         this.setState({
-            guowaiData: store.getState().guowaiData
+            guowaiData: store.getState().guowaiData,
+            cityPositionData: store.getState().cityZb
         })
     }
 }

@@ -2,41 +2,39 @@ import React, { Component, Fragment } from 'react'
 
 import echarts from 'echarts';
 
-class App extends Component {
+class tuBiao2 extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            list: []
+            list: null//这个不用了，直接用props
         }
     }
     render() {
         return (
             <Fragment>
-                <div id="echartsTable2" className="marTop20" style={{ width: '100%', height: '550px',"border":"1px solid #e1e1e1" }}></div>
+                <div id="echartsTable2" className="marTop20" style={{ width: '100%', height: '550px', "border": "1px solid #e1e1e1" }}></div>
             </Fragment>
         )
     }
     componentDidMount() {
-        //在这里写这个是因为，当组件运行过后，关闭了这个组件，又从新打开了组件，组件的state里面没有值，但是因为打开过一次props里有还有值，所以利用这一点，直接从props里那数据
-        if (this.props.data == undefined) {
-        } else {
-            this.setState({
-                list: this.props.data
-            }, function () {
-                this.loadTable2()
-            });
+        var _this = this;
+        //当组件渲染完毕后执行
+        if (_this.props.data !== null && _this.props.data.length > 0) {
+            _this.loadTable2()
         }
     }
-    componentWillReceiveProps(nextProps) {
-        //接收到props时执行
+    shouldComponentUpdate(nextProps, nextState) {
         var _this = this;
-        if (_this.props.data != nextProps.data) {
-            _this.setState({
-                list: nextProps.data
-            }, function () {
-                _this.loadTable2()
-            });
+        //当props或state改变后执行
+        if (_this.props.data !== null && _this.props.data.length > 0) {
+            return true;
         }
+
+        return false;
+    }
+    componentWillUpdate() {
+        var _this = this;
+        _this.loadTable2()
     }
     loadTable2() {
         var _this = this;
@@ -70,7 +68,7 @@ class App extends Component {
                     radius: '40%',
                     center: ['50%', '38%'],
                     //roseType: 'radius',//'area',
-                    data: _this.state.list
+                    data: _this.props.data
                 }
             ]
         };
@@ -79,4 +77,7 @@ class App extends Component {
 
     }
 }
-export default App
+tuBiao2.defaultProps = {
+    "data": null
+}
+export default tuBiao2

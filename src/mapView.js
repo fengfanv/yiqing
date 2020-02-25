@@ -2,20 +2,23 @@ import React, { Component, Fragment } from 'react';
 
 import echarts from 'echarts'
 
+//import store from './store/index'
+
 //引入地图的易拉类型
 import "echarts/dist/extension/bmap.min.js"
 
 //城市坐标数据
-import cityPositionData from './cityData.json'
+//import cityPositionData from './cityData.json'
 
 //地图样式数据
 import MapStyle from './mapStyle.json'
 
-class App extends Component {
+class mapView extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      mapData: {}
+      mapData: null,//没有需要修改的数据，所以不用这个了，直接用props
+      cityPositionData: null
     }
   }
   render() {
@@ -26,41 +29,33 @@ class App extends Component {
     )
   }
   componentDidMount() {
-    //在这里写这个是因为，当组件运行过后，关闭了这个组件，又从新打开了组件，组件的state里面没有值，但是因为打开过一次props里有还有值，所以利用这一点，直接从props里那数据
-    // console.log('地图组件加载！,state');
-    // console.log(this.state);
-    // console.log('地图组件加载！,props');
-    // console.log(this.props);
-    if (this.props.data == undefined) {
-    } else {
-      this.setState({
-        mapData: this.props.data
-      }, function () {
-        this.loadMap();
-      });
+    //当组件渲染完毕后执行
+    var _this = this;
+    if (_this.props.data !== null && _this.props.cityPositionData !== null && _this.props.data.length > 0) {
+      _this.loadMap();
     }
   }
-  componentWillReceiveProps(nextPorps) {
-    //console.log('地图组件props运行！');
-    var _this = this;
-    //当组件接收到props时执行
-    /**
+  /**
      * echarts
      * 文档地址：https://www.echartsjs.com/zh/option.html#series-effectScatter
      * 文档使用：当想访问scatter这个类型的插件时，https://www.echartsjs.com/zh/option.html#这个网址#后面加scatter这个单词，当想知道scatter里面data时接着在scatter后面加  .data  就知道了  他这个文档有点逗比
      */
-    if (_this.props.data != nextPorps.data) {
-      //console.log(nextPorps);
-      //console.log('我mapView接收到了参数');
-      _this.setState({
-        mapData: nextPorps.data
-      }, function () {
-        this.loadMap();
-      });
+  shouldComponentUpdate(nextProps, nextState) {
+    var _this = this;
+    //上面的在存到state里，在使用太慢了，直接用props，有缓存
+    //上面这句话有点问题，父组件要要是模仿vue里v-if命令组件就被销毁了，这时props里就不缓存数据了
+    if (_this.props.data !== null && _this.props.data.length > 0) {
+      return true;
     }
+    return false;
   }
+  componentWillUpdate() {
+    //允许渲染后执行
+    var _this = this;
+    _this.loadMap();
+  }
+  //数组倒叙方法
   daoXunArr(arr) {
-    //数组倒叙
     var newArr = [];
     var arrLen = arr.length - 1;
     for (var i = 0; i <= arrLen; i++) {
@@ -69,7 +64,8 @@ class App extends Component {
     return newArr
   }
   loadMap() {
-    const data = this.state.mapData;//城市疫情数量数据
+    const data = this.props.data;//城市疫情数量数据
+    const cityPositionData = this.props.cityPositionData;//城市坐标数据
     var myChart = echarts.init(document.getElementById('echartsMap'));
     var convertData = function (data) {
       var res = [];
@@ -96,8 +92,8 @@ class App extends Component {
     var newyiqingArr = this.daoXunArr(yiqingArr.slice(6));
 
 
-    var MaxValue = newYiqingArrTop5[newYiqingArrTop5.length-1].value;
-    var center = [MaxValue[0],MaxValue[1]];//获取最大的中心坐标
+    var MaxValue = newYiqingArrTop5[newYiqingArrTop5.length - 1].value;
+    var center = [MaxValue[0], MaxValue[1]];//获取最大的中心坐标
     //配置项
     var option = {
       tooltip: {
@@ -196,4 +192,11 @@ class App extends Component {
   }
 }
 
-export default App;
+//设置props默认值
+mapView.defaultProps = {
+  "data": null,
+  "cityPositionData": null
+}
+
+
+export default mapView;

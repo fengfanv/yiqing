@@ -21,11 +21,11 @@ class App extends Component {
                     {
                         this.state.shishiData.list.map((item, index) => {
                             return (
-                                <li key={'shshi'+index}>
-                                    <div className={index===0?"shishi_list_time_one":"shishi_list_time"}>{item.date}</div>
+                                <li key={'shshi' + index}>
+                                    <div className={index === 0 ? "shishi_list_time_one" : "shishi_list_time"}>{item.date}</div>
                                     <div className="shishi_list_content">
                                         <h1>{item.title}</h1>
-                                        <p>{item.content.replace(/�/g,"")}</p>
+                                        <p>{item.content.replace(/�/g, "")}</p>
                                     </div>
                                 </li>
                             )
@@ -37,11 +37,18 @@ class App extends Component {
             </Fragment>
         )
     }
+    shouldComponentUpdate(nextProps, nextState) {
+        if (this.state.shishiData !== nextState.shishiData) {
+            return true
+        } else {
+            return false
+        }
+    }
     //redux订阅模式
     storeChange() {
         this.setState({
             shishiData: store.getState().shishiData
-        })
+        });
     }
 }
 export default App
