@@ -40,6 +40,9 @@
     text-align: left;
     line-height: 80px;
     font-size: 30px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .yqList p {

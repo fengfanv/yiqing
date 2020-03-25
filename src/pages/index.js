@@ -59,8 +59,8 @@ class Index extends Component {
                         </div>
                     </div>
                     {/* 更新时间 */}
-                    <p className="update_time">更新时间:{this.state.indexData.updataDate}</p>
-                    {/*全国 总数据汇总展示*/}
+                    {/* <p className="update_time">更新时间:{this.state.indexData.updataDate}</p> */}
+                    {/* 全国 总数据汇总展示
                     <ul className="total_list clearfix">
                         <li>
                             <p>确诊</p>
@@ -87,10 +87,10 @@ class Index extends Component {
                             <h3 className="d_color">{this.state.indexData.death}</h3>
                             <h4>较昨日<span className="d_color">+{this.state.indexData.deathIncr}</span></h4>
                         </li>
-                    </ul>
+                    </ul> */}
                     {/* 病毒名称和防治措施 */}
                     <div className="board">
-                        <p><span>病毒</span>：新型冠状病毒 SARS-CoV-2</p>
+                        <p><span>病毒</span>：新型冠状病毒 COVID-19</p>
                         <p><span>传播途径</span>：飞沫传播、接触传播;粪口传播和气溶胶传播尚待确认</p>
                     </div>
                     {/* 菜单 */}
@@ -151,14 +151,15 @@ class Index extends Component {
         //var shishiData = {};//实时数据
 
         request.get("http://www.kangyupeng.cn:8080/api/yq")
+        //request.get("http://localhost:8080/api/yq")
             .then(function (data) {
-                _this.setState({
-                    indexData: data.indexData
-                })
+                // _this.setState({
+                //     indexData: data.indexData
+                // })
                 //保存城市坐标数据
                 _this.saveData('ChangeCityZb', data.cityZb);
                 //保存首页数据
-                _this.saveData('ChangeI', data.indexData);
+                //_this.saveData('ChangeI', data.indexData);
                 //保存国内数据
                 _this.saveData('ChangeGn', data.guoneiData);
                 //保存国外数据

@@ -45,10 +45,18 @@
 
 .total_list li {
     float: left;
+    width: 142px;
+    height: auto;
+    text-align: center;
+    /* margin-left: 4px; */
+    /* margin-left: 33.2px; */
+}
+.total_list2 li {
+    float: left;
     width: 146px;
     height: auto;
     text-align: center;
-    margin-left: 4px;
+    margin-left: 25px;
     /* margin-left: 33.2px; */
 }
 
@@ -91,7 +99,7 @@
 }
 
 .update_time {
-    text-indent: 1em;
+    /* text-indent: 1em; */
     color: #999;
     font-size: 26px;
     margin-top: 16px;
@@ -187,10 +195,18 @@
     }
     .total_list li {
         float: left;
+        width: 1.42rem;
+        height: auto;
+        text-align: center;
+        /* margin-left: 0.04rem; */
+        /* margin-left: 0.332rem; */
+    }
+    .total_list2 li {
+        float: left;
         width: 1.46rem;
         height: auto;
         text-align: center;
-        margin-left: 0.04rem;
+        margin-left: 0.25rem;
         /* margin-left: 0.332rem; */
     }
     .total_list li p {
@@ -203,7 +219,7 @@
         font-size: 0.22rem;
     }
     .update_time {
-        text-indent: 1em;
+        /* text-indent: 1em; */
         color: #999;
         font-size: 0.26rem;
         margin-top: 0.16rem;

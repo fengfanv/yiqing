@@ -68,7 +68,7 @@ class tuBiao2 extends Component {
                     radius: '40%',
                     center: ['50%', '38%'],
                     //roseType: 'radius',//'area',
-                    data: _this.props.data
+                    data: _this.props.data.slice(0, 30)
                 }
             ]
         };
