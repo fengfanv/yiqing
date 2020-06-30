@@ -3,13 +3,13 @@ import React, { Component, Fragment } from 'react'
 import store from '../store/index'
 
 //引入子组件
-import MapView from '../mapView'
+import MapView from '../components/mapView'
 
-import TuBiao from '../tuBiao'
+import TuBiao from '../components/tuBiao'
 
-import YqList from '../yqList'
+import YqList from '../components/yqList'
 
-import GuoNeiYiQing_index from '../GuoNeiYiQing_index'
+import GuoNeiYiQing_StatusInfo from '../components/GuoNeiYiQing_StatusInfo'
 
 class App extends Component {
     constructor(props) {
@@ -26,7 +26,7 @@ class App extends Component {
         return (
             <Fragment>
                 {/* <div>国内疫情</div> */}
-                <GuoNeiYiQing_index data={this.state.guoneiData.indexData}/>
+                <GuoNeiYiQing_StatusInfo data={this.state.guoneiData.indexData}/>
                 <MapView data={this.state.guoneiData.mapData} cityPositionData={this.state.cityPositionData} />
                 <TuBiao data={this.state.guoneiData.tableData} />
                 <YqList data={this.state.guoneiData.listData} />

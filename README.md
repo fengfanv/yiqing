@@ -7,8 +7,6 @@
 
 3、echarts
 
-4、react-router
-
 ### 使用方法
 1、安装依赖
 ```
@@ -57,6 +55,13 @@ npm run build
 ├── public
 ├── src
 │   ├── images
+│   ├── components
+│   	├── mapStyle.json			//地图组件内地图样式数据
+│   	├── mapView.js				//地图组件
+│   	├── yqList.css				//疫情列表组件
+│   	├── yqList.js				//疫情列表组件样式
+│   	├── tuBiao.js				//图表组件1
+│   	├── tuBiao2.js				//图表组件2
 │   ├── pages
 │   	├── GuoNeiYiQing.js		//国内疫情页面
 │   	├── GuoWaiYiQing.js		//国外疫情页面
@@ -69,18 +74,8 @@ npm run build
 │   ├── store
 │   	├── index.js			//redux仓库配置文件
 │   	├── reducer.js			//redux状态管理模块
-│   ├── cityData.json			//地图组件内城市坐标数据
-│   ├── cityyiqing.json			//地图组件内城市疫情数据（测试）
 │   ├── index.js				//项目入口文件
-│   ├── mapStyle.json			//地图组件内地图样式数据
-│   ├── mapView.js				//地图组件
 │   ├── public.css				//项目全局样式
-│   ├── tengxun.json			//腾讯api接口数据（测试）
-│   ├── tuBiao.js				//图表组件1
-│   ├── tuBiao2.js				//图表组件2
-│   ├── yiqingData.json			//天气api接口数据（测试）
-│   ├── yqList.css				//疫情列表组件
-│   ├── yqList.js				//疫情列表组件样式
 ├── .gitignore					//git忽略文件配置文件
 ├── package.json				//项目模块描述文件（项目配置文件）
 ├── package-lock.json			//项目模块记录文件

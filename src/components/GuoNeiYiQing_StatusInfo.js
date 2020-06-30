@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
-
-class GuoWaiYiQing_index extends Component {
+//国内疫情，状态信息
+class GuoNeiYiQing_StatusInfo extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -11,37 +11,46 @@ class GuoWaiYiQing_index extends Component {
             isOneRender: false,//第一次是否已经渲染过
 
             indexData: {
-                nowdiagnosed: 0,
                 diagnosed: 0,
+                suspect: 0,
                 cured: 0,
                 death: 0,
-
-                nowdiagnosedIncr: 0,
+                serious: 0,
                 diagnosedIncr: 0,
+                suspectIncr: 0,
                 curedIncr: 0,
-                deathIncr: 0
+                deathIncr: 0,
+                seriousIncr: 0,
+                updataDate: '正在更新...'
             }
         }
     }
     render() {
         return (
             <Fragment>
+                {/* 更新时间 */}
+                <p className="update_time">更新时间:{this.state.indexData.updataDate}</p>
                 {/*全国 总数据汇总展示*/}
-                <ul className="total_list total_list2 clearfix">
-                    <li>
-                        <p>现有确诊</p>
-                        <h3 className="e_color">{this.state.indexData.nowdiagnosed}</h3>
-                        <h4>较昨日<span className="e_color">+{this.state.indexData.nowdiagnosedIncr}</span></h4>
-                    </li>
+                <ul className="total_list clearfix">
                     <li>
                         <p>确诊</p>
                         <h3 className="a_color">{this.state.indexData.diagnosed || 0}</h3>
                         <h4>较昨日<span className="a_color">+{this.state.indexData.diagnosedIncr || 0}</span></h4>
                     </li>
                     <li>
+                        <p>疑似</p>
+                        <h3 className="b_color">{this.state.indexData.suspect}</h3>
+                        <h4>较昨日<span className="b_color">+{this.state.indexData.suspectIncr}</span></h4>
+                    </li>
+                    <li>
                         <p>治愈</p>
                         <h3 className="c_color">{this.state.indexData.cured}</h3>
                         <h4>较昨日<span className="c_color">+{this.state.indexData.curedIncr}</span></h4>
+                    </li>
+                    <li>
+                        <p>重症</p>
+                        <h3 className="e_color">{this.state.indexData.serious}</h3>
+                        <h4>较昨日<span className="e_color">+{this.state.indexData.seriousIncr}</span></h4>
                     </li>
                     <li>
                         <p>死亡</p>
@@ -54,7 +63,9 @@ class GuoWaiYiQing_index extends Component {
     }
     componentDidMount() {
         var _this = this;
-        if (_this.props.data !== null && _this.props.data !== undefined && _this.props.data.nowdiagnosed >= 0) {
+
+
+        if (_this.props.data !== null && _this.props.data !== undefined && _this.props.data.suspect >= 0) {
             //console.log('执行了');
             //console.log('渲染了33');
             _this.setState({
@@ -65,7 +76,7 @@ class GuoWaiYiQing_index extends Component {
     componentWillReceiveProps(nextProps) {
         //当组件接收到props时执行，
         var _this = this;
-        if (nextProps.data !== null && nextProps.data.nowdiagnosed >= 0) {
+        if (nextProps.data !== null && nextProps.data.suspect >= 0) {
             //console.log('监听到了2');
             if (_this.state.isOneWrite !== "yes") {
                 //没有写入才写入，防止重复写入，重复渲染这个组件
@@ -79,7 +90,7 @@ class GuoWaiYiQing_index extends Component {
     }
     shouldComponentUpdate(nextProps, nextState) {
 
-        if (nextState.indexData !== this.state.indexData && nextState.indexData.nowdiagnosed >= 0 && this.state.isOneRender === false) {
+        if (nextState.indexData !== this.state.indexData && nextState.indexData.suspect >= 0 && this.state.isOneRender === false) {
             //提示：{"name":1} !== {"name":1} ==>true
             //提示：[1,2,3] !== [1,2,3] ==>true
             //提示：[1,2,3] !== [] ==>true
@@ -97,8 +108,8 @@ class GuoWaiYiQing_index extends Component {
 
 }
 //设置props默认值
-GuoWaiYiQing_index.defaultProps = {
+GuoNeiYiQing_StatusInfo.defaultProps = {
     "data": null,
 }
 
-export default GuoWaiYiQing_index;
+export default GuoNeiYiQing_StatusInfo;

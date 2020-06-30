@@ -90,8 +90,8 @@ class Index extends Component {
                     </ul> */}
                     {/* 病毒名称和防治措施 */}
                     <div className="board">
-                        <p><span>病毒</span>：新型冠状病毒 COVID-19</p>
-                        <p><span>传播途径</span>：飞沫传播、接触传播;粪口传播和气溶胶传播尚待确认</p>
+                        <p><span>病毒</span>：新型冠状病毒 2019-nCoV</p>
+                        <p><span>传播途径</span>：呼吸道飞沫传播和接触传播</p>
                     </div>
                     {/* 菜单 */}
                     {/* <Router> */}
