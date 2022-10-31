@@ -1,5 +1,5 @@
 # 疫情动态 `全民战疫情，贡献一份力量。`
-![](/public/picture.png)
+![](./images/picture.png)
 ### 技术栈
 1、react
 
@@ -7,12 +7,20 @@
 
 3、echarts
 
+4、node.js
+
 ### 使用方法
 1、安装依赖
 ```
+# 前端项目安装依赖
+cd web
+npm install
+
+# node.js项目安装依赖
+cd server
 npm install
 ```
-2、依赖安装完毕后，如果要兼容IE浏览器看这部，不需要兼容则直接进行第3步
+2、前端项目里，依赖安装完毕后，如果要兼容IE浏览器看这部，不需要兼容则直接进行第3步
 ```javascript
 //1、进入项目node_modules\react-scripts\config\webpack.config.js文件夹配置webpack.config.js
 //2、找到 entry 值，将内部的两个参数位置调换一下位置（把 paths.appIndexJs 放到最上面）
@@ -42,13 +50,20 @@ entry: [
 ```
 3、启动项目
 ```
+# 前端项目启动项目
+cd web
 npm start
+
+# node.js项目启动项目
+cd server
+node index.js
 ```
-4、打包项目
+4、前端项目打包
 ```
+cd web
 npm run build
 ```
-### 文件结构
+### 前端文件目录结构
 ```
 ├── build
 ├── node-modules
@@ -79,6 +94,5 @@ npm run build
 ├── .gitignore					//git忽略文件配置文件
 ├── package.json				//项目模块描述文件（项目配置文件）
 ├── package-lock.json			//项目模块记录文件
-├── README.md
 ```
 
