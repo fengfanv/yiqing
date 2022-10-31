@@ -1,5 +1,5 @@
 # 疫情动态 `全民战疫情，贡献一份力量。`
-![](./images/picture.png)
+![](/images/picture.png)
 ### 技术栈
 1、react
 
